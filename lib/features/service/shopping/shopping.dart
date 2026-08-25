@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mcare_copy2/features/service/shopping/widgets/medicine_card.dart';
 import 'package:mcare_copy2/utils/constants/colors.dart';
@@ -329,64 +330,56 @@ class Shopping extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        titleSpacing: 16.0, // Adjust this if the whole row needs to move left/right
-        toolbarHeight: 48.0,
+        titleSpacing: 16.w,
+        toolbarHeight: 48.h,
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
         systemOverlayStyle: SystemUiOverlayStyle.light,
-        title: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            IconButton(
-              padding: EdgeInsets.zero, // Removes default padding
-              constraints: const BoxConstraints(), // Removes default 48x48 minimum size
-              onPressed: () {},
-              // Note: Icons.arrow_back_ios_new looks closer to your Figma design and centers better than arrow_back_ios
-              icon: Icon(Icons.arrow_back_ios_new, size: 24, color: MColors.textSecondaryColor),
-            ),
-            SizedBox(width: 15),
-            Expanded(
-              child: Container(
-                height: 48.0,
-                decoration: BoxDecoration(
-                  color: Color(0XFFF9F9F9),
-                  borderRadius: BorderRadius.circular(12.0),
-                  border: Border.all(color: MColors.thirtyColor),
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
-                    // prefixIcon: SvgPicture.asset('assets/icons/svg/search_outline.svg', height: 24),
-                    // Wrap in padding to give the icon breathing room inside the field
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: SvgPicture.asset(
-                        'assets/icons/svg/search_outline.svg',
-                        height: 20, // Explicitly set to 20px based on Figma
-                        width: 20,
+        title: Padding(
+          padding: EdgeInsets.only(right: 16.w), // <-- balances titleSpacing on the right
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              IconButton(
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(),
+                onPressed: () {},
+                icon: Icon(Icons.arrow_back_ios_new, size: 24.sp, color: MColors.textSecondaryColor),
+              ),
+              SizedBox(width: 15.w),
+              Expanded(
+                child: Container(
+                  height: 48.h,
+                  decoration: BoxDecoration(
+                    color: const Color(0XFFF9F9F9),
+                    borderRadius: BorderRadius.circular(12.r),
+                    border: Border.all(color: MColors.thirtyColor),
+                  ),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      prefixIcon: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 12.w),
+                        child: SvgPicture.asset('assets/icons/svg/search_outline.svg', height: 20.sp, width: 20.sp),
                       ),
+                      prefixIconConstraints: BoxConstraints(minWidth: 44.w, minHeight: 20.h),
+                      hintText: 'Search product or store',
+                      hintStyle: MTextTheme.labelMedium.copyWith(color: MColors.textThirtyColor),
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.symmetric(vertical: 14.h),
                     ),
-                    // Crucial: Forces the prefixIcon to wrap tightly around the 20px icon + padding
-                    prefixIconConstraints: const BoxConstraints(minWidth: 44, minHeight: 20),
-                    hintText: 'Search product or store',
-                    hintStyle: MTextTheme.labelMedium.copyWith(color: MColors.textThirtyColor),
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(vertical: 14.0),
                   ),
                 ),
               ),
-            ),
-            SizedBox(width: 15),
-            IconButton(
-              onPressed: () {},
-              constraints: const BoxConstraints(), // Removes default minimum size
-              icon: SvgPicture.asset(
-                'assets/icons/svg/cart_outline.svg',
-                height: 24, // Explicitly set to 24px based on Figma
-                width: 24,
+              SizedBox(width: 15.w),
+              IconButton(
+                onPressed: () {},
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(),
+                icon: SvgPicture.asset('assets/icons/svg/cart_outline.svg', height: 24.sp, width: 24.sp),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
 
@@ -399,13 +392,26 @@ class Shopping extends StatelessWidget {
             children: [
               ///---------------------------------[Buttons horizonatal row]--------------------------------------------
               Padding(
-                padding: const EdgeInsets.only(left: 26, top: 15, bottom: 15),
+                padding: EdgeInsets.only(left: 26.w, top: 15.h, bottom: 15.h),
                 child: ButtonRow(
                   childList: [
-                    Icon(Icons.tune, size: 20, color: Colors.black),
-                    Text('Medicine & Treatment', style: MTextTheme.labelMedium),
-                    Text('Milk', style: MTextTheme.labelMedium),
-                    Text('Sexual Health', style: MTextTheme.labelMedium),
+                    Icon(
+                      Icons.tune,
+                      size: 20.w,
+                      //  color: Colors.black
+                    ),
+                    Text(
+                      'Medicine & Treatment',
+                      //  style: MTextTheme.labelMedium
+                    ),
+                    Text(
+                      'Milk',
+                      // style: MTextTheme.labelMedium
+                    ),
+                    Text(
+                      'Sexual Health',
+                      //  style: MTextTheme.labelMedium
+                    ),
                     Text('Sexual Health'),
                   ],
                 ),
@@ -413,7 +419,7 @@ class Shopping extends StatelessWidget {
 
               ///---------------------------------[Oficial Store]--------------------------------------------
               Container(
-                padding: EdgeInsets.only(left: 26, top: 20, bottom: 20),
+                padding: EdgeInsets.only(left: 26.w, top: 20.h, bottom: 20.h),
                 color: MColors.thirtyColor,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -422,51 +428,51 @@ class Shopping extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text('Official Store', style: MTextTheme.semiBold.copyWith(fontSize: 16)),
+                        Text('Official Store', style: MTextTheme.semiBold.copyWith(fontSize: 16.sp)),
                         Spacer(),
                         Text('See all', style: MTextTheme.labelMedium.copyWith(color: MColors.primaryColor)),
-                        SizedBox(width: 26),
+                        SizedBox(width: 26.w),
                       ],
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     Text(
                       'Special offers from various renowned brands',
                       style: MTextTheme.labelMedium.copyWith(color: Color(0XFF090909)),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     SizedBox(
-                      height: 140,
+                      height: 140.h,
                       child: ListView.separated(
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) => productList[index],
-                        separatorBuilder: (BuildContext context, int index) => SizedBox(width: 10),
+                        separatorBuilder: (BuildContext context, int index) => SizedBox(width: 10.w),
                         itemCount: productList.length,
                       ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 20.h),
 
               ///---------------------------------[Hot Sales]--------------------------------------------
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 26),
+                padding: EdgeInsets.symmetric(horizontal: 26.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Hot Sales', style: MTextTheme.semiBold.copyWith(fontSize: 16)),
+                    Text('Hot Sales', style: MTextTheme.semiBold.copyWith(fontSize: 16.sp)),
                     Text('See all', style: MTextTheme.labelMedium.copyWith(color: MColors.primaryColor)),
                   ],
                 ),
               ),
-              SizedBox(height: 15),
+              SizedBox(height: 15.h),
               Padding(
-                padding: EdgeInsets.only(left: 26),
+                padding: EdgeInsets.only(left: 26.w),
                 child: SizedBox(
-                  height: 250,
+                  height: 248.h,
                   width: double.infinity,
                   child: ListView.separated(
-                    separatorBuilder: (context, index) => SizedBox(width: 10),
+                    separatorBuilder: (context, index) => SizedBox(width: 10.w),
                     itemCount: medicineCard.length,
                     itemBuilder: (context, index) {
                       return medicineCard[index];
@@ -475,26 +481,26 @@ class Shopping extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              SizedBox(height: 15.h),
 
               ///---------------------------------[Recently viewd]--------------------------------------------
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 26),
+                padding: EdgeInsets.symmetric(horizontal: 26.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Recently Viewed', style: MTextTheme.semiBold.copyWith(fontSize: 16)),
+                    Text('Recently Viewed', style: MTextTheme.semiBold.copyWith(fontSize: 16.sp)),
                     Text('See all', style: MTextTheme.labelMedium.copyWith(color: MColors.primaryColor)),
                   ],
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 26),
+                padding: EdgeInsets.symmetric(horizontal: 26.w),
                 child: SizedBox(
-                  height: 248,
+                  height: 248.h,
                   width: double.infinity,
                   child: ListView.separated(
-                    separatorBuilder: (context, index) => SizedBox(width: 10),
+                    separatorBuilder: (context, index) => SizedBox(width: 10.w),
                     itemCount: medicineCard.length,
                     itemBuilder: (context, index) {
                       return medicineCard[index];
@@ -503,33 +509,33 @@ class Shopping extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
+              SizedBox(height: 15.h),
 
               ///---------------------------------[Layanan Kesehatan]--------------------------------------------
               Padding(
-                padding: EdgeInsets.only(left: 26),
+                padding: EdgeInsets.only(left: 26.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Layanan Kesehatan', style: MTextTheme.semiBold.copyWith(fontSize: 16)),
+                    Text('Layanan Kesehatan', style: MTextTheme.semiBold.copyWith(fontSize: 16.sp)),
                     // Text('See all', style: MTextTheme.labelMedium.copyWith(color: MColors.primaryColor)),
                   ],
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 10.h),
               Container(
-                padding: EdgeInsets.only(left: 26),
-                height: 178,
+                padding: EdgeInsets.only(left: 26.w),
+                height: 178.h,
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemCount: bestSellingTile.length,
-                  separatorBuilder: (context, index) => SizedBox(width: 7),
+                  separatorBuilder: (context, index) => SizedBox(width: 7.w),
                   itemBuilder: (context, index) {
                     return bestSellingTile[index];
                   },
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 10.h),
             ],
           ),
         ),

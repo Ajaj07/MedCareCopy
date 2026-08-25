@@ -90,11 +90,11 @@ class MedicineCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 178.w,
-      // height: 248,
+      height: 248.h,
       padding: EdgeInsets.only(left: 12.w, right: 12.w, top: 3.h, bottom: 10.h),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
         border: Border.all(color: const Color(0XFFE3E3E3), width: 1),
         boxShadow: [
           BoxShadow(

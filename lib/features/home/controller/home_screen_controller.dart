@@ -1,16 +1,17 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:mcare_copy2/features/profile/screens/account_setting/account_setting.dart';
+// import 'package:mcare_copy2/features/profile/screens/account_setting/account_setting.dart';
 import 'package:mcare_copy2/features/profile/screens/health_history/health_history.dart';
 import 'package:mcare_copy2/features/profile/screens/notifications/Notifications.dart';
 import 'package:mcare_copy2/features/profile/screens/notifications/empty_notification.dart';
-import 'package:mcare_copy2/features/profile/screens/percription_history/percription_history.dart';
-import 'package:mcare_copy2/features/profile/screens/transctions/transactions.dart';
-import 'package:mcare_copy2/features/service/articel/screens/article.dart';
+// import 'package:mcare_copy2/features/profile/screens/percription_history/percription_history.dart';
+// import 'package:mcare_copy2/features/profile/screens/transctions/transactions.dart';
+// import 'package:mcare_copy2/features/service/articel/screens/article.dart';
 import 'package:mcare_copy2/features/service/hospitals/list_hospital/detail_hospital.dart';
 // import 'package:mcare_copy2/features/service/medication_remainder/screens/medication_remainder/medication_remainder_empty.dart';
 import 'package:mcare_copy2/features/service/medication_remainder/screens/medication_remainder/medication_remainder_fill.dart';
-import 'package:mcare_copy2/features/service/shopping/shopping.dart';
+import 'package:mcare_copy2/features/service/shopping/screens/shopping_filter.dart';
+// import 'package:mcare_copy2/features/service/shopping/shopping.dart';
 import 'package:mcare_copy2/features/service/specialist/specialist.dart';
 
 import '../../history/history.dart';
@@ -40,7 +41,8 @@ class HomeScreenController extends GetxController {
     // PercriptionHistory(),
     // Transactions(),
     // AccountSetting(),
-    Shopping(),
+    // Shopping(),
+    ShoppingFilter(),
     Notifications(),
     EmptyNotification(),
     HealthHistory(),
