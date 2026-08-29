@@ -330,14 +330,14 @@ class Shopping extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        titleSpacing: 16.w,
-        toolbarHeight: 48.h,
+        titleSpacing: 12.w,
+        toolbarHeight: 66.h,
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
         systemOverlayStyle: SystemUiOverlayStyle.light,
         title: Padding(
-          padding: EdgeInsets.only(right: 16.w), // <-- balances titleSpacing on the right
+          padding: EdgeInsets.only(right: 16.w, top: 15.h), // <-- balances titleSpacing on the right
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
