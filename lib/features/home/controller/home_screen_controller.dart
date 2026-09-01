@@ -26,6 +26,7 @@ import '../../profile/profile.dart';
 import '../../service/articel/articel_list.dart';
 import '../../service/service.dart';
 import '../../service/shopping/screens/description/description_medicine.dart';
+import '../../service/shopping/screens/description/description_tabbar.dart';
 // import '../screens/home.dart';
 
 class HomeScreenController extends GetxController {
@@ -43,6 +44,7 @@ class HomeScreenController extends GetxController {
     // Transactions(),
     // AccountSetting(),
     // Shopping(),
+    DescriptionTabbar(),
     DescriptionMedicine(),
     ShoppingFilter(),
     Notifications(),
