@@ -5,8 +5,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mcare_copy2/features/service/shopping/widgets/button_row.dart';
 import 'package:mcare_copy2/features/service/shopping/widgets/medicine_card.dart';
 import 'package:mcare_copy2/utils/theme/widget/text_theme.dart';
-
+import 'package:get/get.dart';
 import '../../../../utils/constants/colors.dart';
+import '../controller/shopping_filter_controller.dart';
 
 class ShoppingFilter extends StatelessWidget {
   ShoppingFilter({super.key});
@@ -73,6 +74,7 @@ class ShoppingFilter extends StatelessWidget {
     ),
   ];
 
+  final controller = Get.put(ShoppingFilterController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -180,7 +182,17 @@ class ShoppingFilter extends StatelessWidget {
                     childAspectRatio: 178 / 248,
                   ),
                   itemBuilder: (context, index) {
-                    return medicineCard[index];
+                    return GestureDetector(
+                      onTap: () {
+                        final item = medicineCard[index];
+                        controller.showAddCard(
+                          image: item.imageName,
+                          medicineName: item.medicineName,
+                          price: item.price,
+                        );
+                      },
+                      child: medicineCard[index],
+                    );
                   },
                 ),
               ),
@@ -191,3 +203,36 @@ class ShoppingFilter extends StatelessWidget {
     );
   }
 }
+
+// PersistentBottomSheetController addToCart(BuildContext context) {
+//   return showBottomSheet(context: context, builder: (BuildContext context) {});
+// }
+
+void showMyBottomSheet() {
+  Get.bottomSheet(
+    Container(
+      padding: const EdgeInsets.all(20),
+      child: const Text('Hello from Bottom Sheet', style: TextStyle(fontSize: 20)),
+    ),
+  );
+}
+
+void addCardBottomSheet() {
+  Get.bottomSheet(Container());
+}
+
+
+   // switch (index) {
+                        //   case 0:
+                        //     ScaffoldMessenger.of(context).showSnackBar(
+                        //       SnackBar(backgroundColor: Colors.blue, content: Text("you are selected $index item")),
+                        //     );
+                        //   case 1:
+                        //     ScaffoldMessenger.of(context).showSnackBar(
+                        //       SnackBar(backgroundColor: Colors.red, content: Text("you are selected $index item")),
+                        //     );
+                        //   case 3:
+                        //     ScaffoldMessenger.of(context).showSnackBar(
+                        //       SnackBar(backgroundColor: Colors.red, content: Text("you are selected $index item")),
+                        //     );
+                        // }
