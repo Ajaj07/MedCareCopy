@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mcare_copy2/features/service/shopping/data/medicine_card_data.dart';
 import 'package:mcare_copy2/features/service/shopping/widgets/button_row.dart';
-import 'package:mcare_copy2/features/service/shopping/widgets/medicine_card.dart';
 import 'package:mcare_copy2/utils/theme/widget/text_theme.dart';
 import 'package:get/get.dart';
 import '../../../../utils/constants/colors.dart';
@@ -12,67 +12,67 @@ import '../controller/shopping_filter_controller.dart';
 class ShoppingFilter extends StatelessWidget {
   ShoppingFilter({super.key});
 
-  final List<MedicineCard> medicineCard = [
-    MedicineCard(
-      imageName: 'assets/images/shoppings/medicine_1.png',
-      medicineName: 'Promag 10 Tablets',
-      price: '\$4,00',
-    ),
-    MedicineCard(
-      imageName: 'assets/images/shoppings/medicine_2.png',
-      medicineName: 'STRIP NEURODEX 10 Tablets',
-      price: '\$2,00',
-    ),
+  // final List<MedicineCard> medicineCard = [
+  //   MedicineCard(
+  //     imageName: 'assets/images/shoppings/medicine_1.png',
+  //     medicineName: 'Promag 10 Tablets',
+  //     price: '\$4,00',
+  //   ),
+  //   MedicineCard(
+  //     imageName: 'assets/images/shoppings/medicine_2.png',
+  //     medicineName: 'STRIP NEURODEX 10 Tablets',
+  //     price: '\$2,00',
+  //   ),
 
-    MedicineCard(imageName: 'assets/images/shoppings/medicine_3.png', medicineName: 'Mylanta Strip', price: '\$2,00'),
-    MedicineCard(
-      imageName: 'assets/images/shoppings/medicine_4.png',
-      medicineName: 'Bufect Strip of 4 Tablets Heat and Pain Relief',
-      price: '\$2,00',
-    ),
+  //   MedicineCard(imageName: 'assets/images/shoppings/medicine_3.png', medicineName: 'Mylanta Strip', price: '\$2,00'),
+  //   MedicineCard(
+  //     imageName: 'assets/images/shoppings/medicine_4.png',
+  //     medicineName: 'Bufect Strip of 4 Tablets Heat and Pain Relief',
+  //     price: '\$2,00',
+  //   ),
 
-    MedicineCard(
-      imageName: 'assets/images/shoppings/medicine_5.png',
-      medicineName: 'BODREX MEDICINE 10S PER STRIP',
-      price: '\$4,00',
-    ),
+  //   MedicineCard(
+  //     imageName: 'assets/images/shoppings/medicine_5.png',
+  //     medicineName: 'BODREX MEDICINE 10S PER STRIP',
+  //     price: '\$4,00',
+  //   ),
 
-    MedicineCard(
-      imageName: 'assets/images/shoppings/medicine_6.png',
-      medicineName: 'Paratusin 10 Tablets',
-      price: '\$4,00',
-    ),
+  //   MedicineCard(
+  //     imageName: 'assets/images/shoppings/medicine_6.png',
+  //     medicineName: 'Paratusin 10 Tablets',
+  //     price: '\$4,00',
+  //   ),
 
-    MedicineCard(
-      imageName: 'assets/images/shoppings/medicine_2.png',
-      medicineName: 'STRIP NEURODEX 10 Tablets',
-      price: '\$4,00',
-    ),
+  //   MedicineCard(
+  //     imageName: 'assets/images/shoppings/medicine_2.png',
+  //     medicineName: 'STRIP NEURODEX 10 Tablets',
+  //     price: '\$4,00',
+  //   ),
 
-    MedicineCard(
-      imageName: 'assets/images/shoppings/medicine_2.png',
-      medicineName: 'STRIP NEURODEX 10 Tablets',
-      price: '\$4,00',
-    ),
+  //   MedicineCard(
+  //     imageName: 'assets/images/shoppings/medicine_2.png',
+  //     medicineName: 'STRIP NEURODEX 10 Tablets',
+  //     price: '\$4,00',
+  //   ),
 
-    MedicineCard(
-      imageName: 'assets/images/shoppings/medicine_2.png',
-      medicineName: 'STRIP NEURODEX 10 Tablets',
-      price: '\$4,00',
-    ),
+  //   MedicineCard(
+  //     imageName: 'assets/images/shoppings/medicine_2.png',
+  //     medicineName: 'STRIP NEURODEX 10 Tablets',
+  //     price: '\$4,00',
+  //   ),
 
-    MedicineCard(
-      imageName: 'assets/images/shoppings/medicine_2.png',
-      medicineName: 'STRIP NEURODEX 10 Tablets',
-      price: '\$4,00',
-    ),
+  //   MedicineCard(
+  //     imageName: 'assets/images/shoppings/medicine_2.png',
+  //     medicineName: 'STRIP NEURODEX 10 Tablets',
+  //     price: '\$4,00',
+  //   ),
 
-    MedicineCard(
-      imageName: 'assets/images/shoppings/medicine_2.png',
-      medicineName: 'STRIP NEURODEX 10 Tablets',
-      price: '\$4,00',
-    ),
-  ];
+  //   MedicineCard(
+  //     imageName: 'assets/images/shoppings/medicine_2.png',
+  //     medicineName: 'STRIP NEURODEX 10 Tablets',
+  //     price: '\$4,00',
+  //   ),
+  // ];
 
   final controller = Get.put(ShoppingFilterController());
   @override
@@ -167,7 +167,7 @@ class ShoppingFilter extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 26.w),
                 child: GridView.builder(
                   physics: const BouncingScrollPhysics(),
-                  itemCount: medicineCard.length,
+                  itemCount: MedicineCardData.medicineCard.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2, // Displays 2 items per row
                     // ⬇️ CUSTOMIZE VERTICAL SPACE (Spacing between rows)
@@ -184,14 +184,14 @@ class ShoppingFilter extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        final item = medicineCard[index];
+                        final item = MedicineCardData.medicineCard[index];
                         controller.showAddCard(
                           image: item.imageName,
                           medicineName: item.medicineName,
                           price: item.price,
                         );
                       },
-                      child: medicineCard[index],
+                      child: MedicineCardData.medicineCard[index],
                     );
                   },
                 ),
@@ -203,36 +203,3 @@ class ShoppingFilter extends StatelessWidget {
     );
   }
 }
-
-// PersistentBottomSheetController addToCart(BuildContext context) {
-//   return showBottomSheet(context: context, builder: (BuildContext context) {});
-// }
-
-void showMyBottomSheet() {
-  Get.bottomSheet(
-    Container(
-      padding: const EdgeInsets.all(20),
-      child: const Text('Hello from Bottom Sheet', style: TextStyle(fontSize: 20)),
-    ),
-  );
-}
-
-void addCardBottomSheet() {
-  Get.bottomSheet(Container());
-}
-
-
-   // switch (index) {
-                        //   case 0:
-                        //     ScaffoldMessenger.of(context).showSnackBar(
-                        //       SnackBar(backgroundColor: Colors.blue, content: Text("you are selected $index item")),
-                        //     );
-                        //   case 1:
-                        //     ScaffoldMessenger.of(context).showSnackBar(
-                        //       SnackBar(backgroundColor: Colors.red, content: Text("you are selected $index item")),
-                        //     );
-                        //   case 3:
-                        //     ScaffoldMessenger.of(context).showSnackBar(
-                        //       SnackBar(backgroundColor: Colors.red, content: Text("you are selected $index item")),
-                        //     );
-                        // }
